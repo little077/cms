@@ -1,30 +1,28 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div>
+    <button @click="add">跳转</button>
+    <router-view />
+  </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script setup lang="ts">
+import { ElButton, ElIcon, ElTimePicker } from 'element-plus'
+import { mainStore } from './pinia/index'
+import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
+const mainStore1 = mainStore()
+let { count, name, doubleCount } = storeToRefs(mainStore1)
+const { increment } = mainStore1
+const router = useRouter()
+const add = () => {
+  // mainStore1.$patch((state) => {
+  //   state.count--
+  //   state.name = 'yuanjinghao'
+  //   console.log(state)
+  // })
+  console.log(router)
+  router.push({ path: '/main' })
 }
+</script>
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+<style scoped></style>
