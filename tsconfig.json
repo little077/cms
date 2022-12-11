@@ -24,7 +24,6 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-    "typings"
   ],
   "exclude": ["node_modules"]
 }
